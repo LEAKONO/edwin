@@ -52,48 +52,13 @@ const Hero = () => {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10 py-12 lg:py-16">
-        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[70vh]">
-          {/* Image - Top on mobile, Right on desktop */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex justify-center lg:justify-end w-full order-1"
-          >
-            <div className="relative">
-              <motion.div
-                whileHover={{ scale: 1.03 }}
-                transition={{ duration: 0.3 }}
-                className="relative z-10"
-              >
-                <div className="w-48 h-48 sm:w-56 sm:h-56 lg:w-72 lg:h-72 xl:w-80 xl:h-80 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 p-1.5 animate-glow">
-                  <div className="w-full h-full rounded-full bg-gray-800 overflow-hidden border-4 border-white">
-                    <img 
-                      src="/images/edu.jpg" 
-                      alt="Edwin Ochieng Opiyo"
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        e.target.style.display = 'none';
-                        e.target.nextSibling.style.display = 'flex';
-                      }}
-                    />
-                    <div 
-                      className="w-full h-full rounded-full bg-gray-800 flex items-center justify-center text-white text-3xl sm:text-4xl lg:text-5xl font-bold hidden"
-                    >
-                      EO
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
-
-          {/* Content - Bottom on mobile, Left on desktop */}
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-20 xl:gap-24 items-center min-h-[70vh]">
+          {/* Content - Left side */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="text-center lg:text-left w-full order-2"
+            className="text-center lg:text-left w-full order-2 lg:order-1"
           >
             {/* Full Name in one line - Less bold */}
             <motion.h1
@@ -180,6 +145,41 @@ const Hero = () => {
                 </motion.div>
               ))}
             </motion.div>
+          </motion.div>
+
+          {/* Image - Right side - Moved further to the right */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex justify-center lg:justify-end w-full order-1 lg:order-2"
+          >
+            <div className="relative lg:mr-8 xl:mr-12 2xl:mr-16">
+              <motion.div
+                whileHover={{ scale: 1.03 }}
+                transition={{ duration: 0.3 }}
+                className="relative z-10"
+              >
+                <div className="w-48 h-48 sm:w-56 sm:h-56 lg:w-72 lg:h-72 xl:w-80 xl:h-80 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 p-1.5 animate-glow">
+                  <div className="w-full h-full rounded-full bg-gray-800 overflow-hidden border-4 border-white">
+                    <img 
+                      src="/images/edu.jpg" 
+                      alt="Edwin Ochieng Opiyo"
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        e.target.nextSibling.style.display = 'flex';
+                      }}
+                    />
+                    <div 
+                      className="w-full h-full rounded-full bg-gray-800 flex items-center justify-center text-white text-3xl sm:text-4xl lg:text-5xl font-bold hidden"
+                    >
+                      EO
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
           </motion.div>
         </div>
       </div>
