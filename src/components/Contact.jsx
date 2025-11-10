@@ -108,7 +108,7 @@ const Contact = () => {
             <div className="bg-gray-800 rounded-xl md:rounded-2xl p-6 md:p-8">
               <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-6">References</h3>
               <div className="space-y-4 md:space-y-6">
-                {references.slice(0, 2).map((ref, index) => (
+                {references.map((ref, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, y: 20 }}
@@ -119,7 +119,8 @@ const Contact = () => {
                     <h4 className="font-bold text-base md:text-lg leading-tight">{ref.name}</h4>
                     <p className="text-blue-400 text-sm md:text-base">{ref.position}</p>
                     <p className="text-gray-400 text-xs md:text-sm mt-1">{ref.organization}</p>
-                    <p className="text-gray-300 text-xs md:text-sm break-all">{ref.email}</p>
+                    {ref.email && <p className="text-gray-300 text-xs md:text-sm break-all">{ref.email}</p>}
+                    <p className="text-gray-300 text-xs md:text-sm">{ref.phone}</p>
                   </motion.div>
                 ))}
               </div>

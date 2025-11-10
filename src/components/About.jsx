@@ -2,10 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { portfolioData } from '../data/portfolioData';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
-import { FaUser, FaMapMarkerAlt, FaPhone, FaEnvelope, FaGlobe } from 'react-icons/fa';
+import { FaUser, FaMapMarkerAlt, FaPhone, FaEnvelope, FaGlobe, FaCertificate } from 'react-icons/fa';
 
 const About = () => {
-  const { personal, qualifications } = portfolioData;
+  const { personal, qualifications, professionalTraining } = portfolioData;
   const { ref, isInView } = useScrollAnimation();
 
   const personalInfo = [
@@ -115,6 +115,35 @@ const About = () => {
             </div>
           </motion.div>
         </div>
+
+        {/* Professional Training Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="mt-12 sm:mt-16"
+        >
+          <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg sm:shadow-xl p-6 sm:p-8">
+            <h3 className="text-xl sm:text-2xl lg:text-2xl font-bold text-gray-900 mb-6 flex items-center">
+              <FaCertificate className="text-blue-600 mr-3" />
+              Professional Training & Certifications
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {professionalTraining.map((training, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.4, delay: 0.8 + index * 0.1 }}
+                  whileHover={{ scale: 1.02 }}
+                  className="p-4 bg-gray-50 rounded-lg border border-gray-200 hover:border-blue-300 transition-all duration-300"
+                >
+                  <p className="text-gray-700 text-sm leading-relaxed">{training}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
 
         {/* Additional Info for Mobile */}
         <motion.div

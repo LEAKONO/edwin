@@ -78,7 +78,7 @@ const Skills = () => {
               { skill: 'Research Writing', level: 95 },
               { skill: 'SPSS Software', level: 80 },
               { skill: 'Microsoft Office', level: 88 },
-              { skill: 'Public Speaking', level: 82 },
+              { skill: 'Python & R Programming', level: 75 },
             ].map((item, index) => (
               <SkillBar key={index} {...item} index={index} />
             ))}
@@ -116,11 +116,26 @@ const Skills = () => {
               </div>
             </motion.div>
 
-            {/* Hobbies & Interests */}
+            {/* Technical Skills */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.8 }}
+              className="bg-white rounded-2xl shadow-xl p-8"
+            >
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Technical Skills</h3>
+              <div className="flex flex-wrap">
+                {skills.technical.map((skill, index) => (
+                  <SkillChip key={index} skill={skill} index={index} category="technical" />
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Hobbies & Interests */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.6, delay: 1.0 }}
               className="bg-white rounded-2xl shadow-xl p-8"
             >
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Hobbies & Interests</h3>
@@ -130,7 +145,7 @@ const Skills = () => {
                     key={index}
                     initial={{ opacity: 0, scale: 0 }}
                     animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                    transition={{ duration: 0.4, delay: 1 + index * 0.1 }}
+                    transition={{ duration: 0.4, delay: 1.2 + index * 0.1 }}
                     whileHover={{ scale: 1.1 }}
                     className="inline-block px-4 py-2 bg-orange-100 text-orange-800 rounded-full text-sm font-semibold m-1 border border-orange-300"
                   >

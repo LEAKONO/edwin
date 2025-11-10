@@ -22,17 +22,16 @@ const Education = () => {
           </h2>
           <div className="w-20 md:w-24 h-1 bg-blue-600 mx-auto"></div>
           <p className="text-gray-600 mt-4 max-w-2xl mx-auto text-sm sm:text-base px-4">
-            Continuous learning and professional development in criminology and data analytics
+            Academic qualifications and continuous learning journey
           </p>
         </motion.div>
 
         <div className="max-w-4xl mx-auto">
-          {/* Timeline - Mobile: Vertical, Desktop: Alternating */}
+          {/* Timeline */}
           <div className="relative">
-            {/* Timeline line - Hidden on mobile, visible on md+ */}
             <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-blue-200"></div>
 
-            {/* Mobile: Simple vertical timeline */}
+            {/* Mobile Timeline */}
             <div className="md:hidden space-y-8">
               {education.map((edu, index) => (
                 <motion.div
@@ -42,7 +41,6 @@ const Education = () => {
                   transition={{ duration: 0.6, delay: index * 0.15 }}
                   className="flex"
                 >
-                  {/* Timeline dot for mobile */}
                   <div className="flex-shrink-0 w-6 flex flex-col items-center mr-4">
                     <div className="w-4 h-4 bg-blue-600 rounded-full border-2 border-white shadow-md z-10"></div>
                     {index !== education.length - 1 && (
@@ -50,7 +48,6 @@ const Education = () => {
                     )}
                   </div>
 
-                  {/* Content for mobile */}
                   <motion.div
                     whileHover={{ scale: 1.02 }}
                     className="bg-gray-50 rounded-xl shadow-lg p-4 border-l-4 border-blue-600 hover:shadow-xl transition-all duration-300 flex-1"
@@ -74,7 +71,7 @@ const Education = () => {
               ))}
             </div>
 
-            {/* Desktop: Alternating timeline */}
+            {/* Desktop Timeline */}
             <div className="hidden md:block">
               {education.map((edu, index) => (
                 <motion.div
@@ -86,7 +83,6 @@ const Education = () => {
                     index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
                   }`}
                 >
-                  {/* Content */}
                   <div className={`w-5/12 ${index % 2 === 0 ? 'pr-8' : 'pl-8'}`}>
                     <motion.div
                       whileHover={{ scale: 1.05 }}
@@ -109,7 +105,6 @@ const Education = () => {
                     </motion.div>
                   </div>
 
-                  {/* Timeline dot */}
                   <div className="relative w-2/12 flex justify-center">
                     <motion.div
                       whileHover={{ scale: 1.5 }}
@@ -117,32 +112,59 @@ const Education = () => {
                     ></motion.div>
                   </div>
 
-                  {/* Empty space for alignment */}
                   <div className="w-5/12"></div>
                 </motion.div>
               ))}
             </div>
           </div>
 
-          {/* Additional Certifications */}
+          {/* Degree Details */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.8 }}
-            className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl md:rounded-2xl p-6 md:p-8 text-white text-center mt-8 md:mt-12"
+            className="bg-white rounded-2xl shadow-xl p-6 md:p-8 mt-8 md:mt-12 border border-gray-200"
           >
-            <FaGraduationCap className="text-3xl md:text-4xl mx-auto mb-3 md:mb-4" />
-            <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">Continuous Learning</h3>
-            <p className="text-blue-100 mb-4 text-sm md:text-base leading-relaxed">
-              Committed to ongoing professional development in data science, security studies, and educational methodologies
-            </p>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-block bg-white text-blue-600 px-5 py-2 md:px-6 md:py-2 rounded-full font-semibold cursor-pointer text-sm md:text-base"
-            >
-              View Certificates
-            </motion.div>
+            <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+              <FaGraduationCap className="text-blue-600 mr-3" />
+              Bachelor of Arts in Criminology & Security Studies
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <h4 className="font-semibold text-gray-900 mb-3">Key Achievements</h4>
+                <ul className="space-y-2 text-gray-700">
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-blue-600 rounded-full mr-3"></div>
+                    Second Class Honours (Upper Division)
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-blue-600 rounded-full mr-3"></div>
+                    Member of Integrity, Cohesion and Security Club
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-blue-600 rounded-full mr-3"></div>
+                    Security Detail during University Elections
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-semibold text-gray-900 mb-3">Specialized Courses</h4>
+                <ul className="space-y-2 text-gray-700">
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-green-600 rounded-full mr-3"></div>
+                    Security Management & Investigation
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-green-600 rounded-full mr-3"></div>
+                    Criminal Justice System
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-green-600 rounded-full mr-3"></div>
+                    Emergency & Risk Management
+                  </li>
+                </ul>
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>
