@@ -51,9 +51,21 @@ const Contact = () => {
   ];
 
   const socialLinks = [
-    { icon: FaLinkedin, href: '#', label: 'LinkedIn' },
-    { icon: FaTwitter, href: '#', label: 'Twitter' },
-    { icon: FaFacebook, href: '#', label: 'Facebook' }
+    { 
+      icon: FaLinkedin, 
+      href: 'https://www.linkedin.com/in/edwin-ochieng-894781343/', 
+      label: 'LinkedIn' 
+    },
+    { 
+      icon: FaTwitter, 
+      href: 'https://x.com/Edwinopiyo17', 
+      label: 'Twitter' 
+    },
+    { 
+      icon: FaFacebook, 
+      href: 'https://www.facebook.com/profile.php?id=100010131274603', 
+      label: 'Facebook' 
+    }
   ];
 
   return (
@@ -134,15 +146,28 @@ const Contact = () => {
                   <motion.a
                     key={index}
                     href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     whileHover={{ scale: 1.1, y: -2 }}
                     whileTap={{ scale: 0.9 }}
-                    className="w-10 h-10 md:w-12 md:h-12 bg-blue-600 rounded-full flex items-center justify-center text-white hover:bg-blue-700 transition-colors duration-300 flex-shrink-0"
+                    className="w-10 h-10 md:w-12 md:h-12 bg-blue-600 rounded-full flex items-center justify-center text-white hover:bg-blue-700 transition-colors duration-300 flex-shrink-0 group relative"
                     aria-label={social.label}
                   >
                     <social.icon className="text-sm md:text-base" />
+                    
+                    {/* Tooltip on hover */}
+                    <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                      {social.label}
+                      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1 w-2 h-2 bg-gray-900 rotate-45"></div>
+                    </div>
                   </motion.a>
                 ))}
               </div>
+              
+              {/* Social Media Description */}
+              <p className="text-gray-400 text-sm mt-4 text-center md:text-left">
+                Connect with me on social media for updates and professional insights
+              </p>
             </div>
           </motion.div>
 
@@ -226,6 +251,16 @@ const Contact = () => {
                 Send Message
               </motion.button>
             </form>
+            
+            {/* Alternative Contact Methods */}
+            <div className="mt-6 pt-6 border-t border-gray-700">
+              <p className="text-gray-400 text-sm text-center">
+                Prefer to connect directly? 
+                <br className="sm:hidden" />
+                Call me at <a href={`tel:${personal.phone}`} className="text-blue-400 hover:text-blue-300">{personal.phone}</a> or 
+                email <a href={`mailto:${personal.email}`} className="text-blue-400 hover:text-blue-300">{personal.email}</a>
+              </p>
+            </div>
           </motion.div>
         </div>
       </div>

@@ -25,6 +25,19 @@ const Hero = () => {
     }
   };
 
+  // CV Download URL - Direct download link
+  const cvDownloadUrl = "https://drive.google.com/uc?export=download&id=1YVjrLeWfF4Pln7c0SQ7GrX2ADhlAKIgq";
+
+  const handleDownloadCV = () => {
+    // Create a temporary anchor element to trigger download
+    const link = document.createElement('a');
+    link.href = cvDownloadUrl;
+    link.setAttribute('download', 'Edwin_Ochieng_Opiyo_CV.pdf');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <section id="home" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 relative overflow-hidden px-4 sm:px-6">
       {/* Background Elements */}
@@ -116,7 +129,7 @@ const Hero = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="border-2 border-white text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full font-semibold flex items-center gap-2 hover:bg-white hover:text-gray-900 transition-all duration-300 justify-center text-xs sm:text-sm md:text-base"
-                onClick={() => window.print()}
+                onClick={handleDownloadCV}
               >
                 <FaDownload className="text-xs sm:text-sm" />
                 Download CV
@@ -177,7 +190,34 @@ const Hero = () => {
                     </div>
                   </div>
                 </div>
+                
+                {/* Floating elements around the image */}
+                <motion.div
+                  animate={{ 
+                    rotate: 360,
+                    scale: [1, 1.1, 1]
+                  }}
+                  transition={{ 
+                    rotate: { duration: 20, repeat: Infinity, ease: "linear" },
+                    scale: { duration: 2, repeat: Infinity }
+                  }}
+                  className="absolute -top-2 -right-2 w-6 h-6 bg-yellow-400 rounded-full opacity-80"
+                />
+                <motion.div
+                  animate={{ 
+                    rotate: -360,
+                    scale: [1, 1.2, 1]
+                  }}
+                  transition={{ 
+                    rotate: { duration: 15, repeat: Infinity, ease: "linear" },
+                    scale: { duration: 3, repeat: Infinity }
+                  }}
+                  className="absolute -bottom-2 -left-2 w-4 h-4 bg-green-400 rounded-full opacity-80"
+                />
               </motion.div>
+              
+              {/* Background glow effect */}
+              <div className="absolute inset-0 bg-blue-500 rounded-full blur-xl opacity-20 animate-pulse"></div>
             </div>
           </motion.div>
         </div>
@@ -192,6 +232,18 @@ const Hero = () => {
         <div className="w-5 h-8 border-2 border-white rounded-full flex justify-center">
           <div className="w-1 h-2 bg-white rounded-full mt-2"></div>
         </div>
+      </motion.div>
+
+      {/* Download CV Tooltip */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2 }}
+        className="fixed bottom-24 right-6 bg-blue-600 text-white px-4 py-2 rounded-lg shadow-lg z-40 hidden lg:block"
+      >
+        <div className="text-sm font-semibold">Download My CV</div>
+        <div className="text-xs opacity-80">Get my complete profile</div>
+        <div className="absolute -bottom-2 right-4 w-4 h-4 bg-blue-600 transform rotate-45"></div>
       </motion.div>
     </section>
   );
