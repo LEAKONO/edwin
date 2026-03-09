@@ -26,7 +26,7 @@ const Hero = () => {
   };
 
   // CV Download URL - Direct download link
-  const cvDownloadUrl = "https://drive.google.com/uc?export=download&id=1YVjrLeWfF4Pln7c0SQ7GrX2ADhlAKIgq";
+  const cvDownloadUrl = "https://drive.google.com/file/d/1IvLqF1JduLc746Ca9QH9hYTZAFySuCys/view?usp=sharing";
 
   const handleDownloadCV = () => {
     // Create a temporary anchor element to trigger download
